@@ -1,3 +1,4 @@
+#if newgrounds
 package;
 
 import flixel.FlxG;
@@ -35,7 +36,7 @@ class NGio
 
 	public static function noLogin(api:String)
 	{
-		trace('INIT NOLOGIN');
+		/*trace('INIT NOLOGIN');
 		GAME_VER = "v" + Application.current.meta.get('version');
 
 		if (api.length != 0)
@@ -55,12 +56,12 @@ class NGio
 
 				call.send();
 			});
-		}
+		}*/
 	}
 
 	public function new(api:String, encKey:String, ?sessionId:String)
 	{
-		trace("connecting to newgrounds");
+		/*trace("connecting to newgrounds");
 
 		NG.createAndCheckSession(api, sessionId);
 
@@ -74,7 +75,7 @@ class NGio
 		{
 			/* a session_id was found in the loadervars, this means the user is playing on newgrounds.com
 			 * and we should login shortly. lets wait for that to happen
-			 */
+			 
 			trace("attempting login");
 			NG.core.onLogin.add(onNGLogin);
 		}
@@ -82,14 +83,14 @@ class NGio
 		{
 			/* They are NOT playing on newgrounds.com, no session id was found. We must start one manually, if we want to.
 			 * Note: This will cause a new browser window to pop up where they can log in to newgrounds
-			 */
+			 
 			NG.core.requestLogin(onNGLogin);
-		}
+		}*/
 	}
 
 	function onNGLogin():Void
 	{
-		trace('logged in! user:${NG.core.user.name}');
+		/*trace('logged in! user:${NG.core.user.name}');
 		isLoggedIn = true;
 		FlxG.save.data.sessionId = NG.core.sessionId;
 		// FlxG.save.flush();
@@ -147,7 +148,7 @@ class NGio
 
 	inline static public function postScore(score:Int = 0, song:String)
 	{
-		if (isLoggedIn)
+		/*if (isLoggedIn)
 		{
 			for (id in NG.core.scoreBoards.keys())
 			{
@@ -184,17 +185,18 @@ class NGio
 
 	inline static public function logEvent(event:String)
 	{
-		NG.core.calls.event.logEvent(event).send();
-		trace('should have logged: ' + event);
+		//NG.core.calls.event.logEvent(event).send();
+		//trace('should have logged: ' + event);
 	}
 
 	inline static public function unlockMedal(id:Int)
 	{
-		if (isLoggedIn)
+		/*if (isLoggedIn)
 		{
 			var medal = NG.core.medals.get(id);
 			if (!medal.unlocked)
 				medal.sendUnlock();
 		}
-	}
+	}*/
 }
+#end
