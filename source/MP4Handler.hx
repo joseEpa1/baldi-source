@@ -39,38 +39,38 @@ class MP4Handler
 
 		if (FlxG.stage.stageHeight / 9 < FlxG.stage.stageWidth / 16)
 		{
-			bitmap.set_width(FlxG.stage.stageHeight * (16 / 9));
-			bitmap.set_height(FlxG.stage.stageHeight);
-		}
-		else
-		{
-			bitmap.set_width(FlxG.stage.stageWidth);
-			bitmap.set_height(FlxG.stage.stageWidth / (16 / 9));
+	//		bitmap.set_width(FlxG.stage.stageHeight * (16 / 9));
+	//		bitmap.set_height(FlxG.stage.stageHeight);
+	//	}
+	//	else
+	//	{
+	//		bitmap.set_width(FlxG.stage.stageWidth);
+	//		bitmap.set_height(FlxG.stage.stageWidth / (16 / 9));
 		}
 
 		
 
-		bitmap.onVideoReady = onVLCVideoReady;
-		bitmap.onComplete = onVLCComplete;
-		bitmap.onError = onVLCError;
+	//	bitmap.onVideoReady = onVLCVideoReady;
+	//	bitmap.onComplete = onVLCComplete;
+	//	bitmap.onError = onVLCError;
 
 		FlxG.stage.addEventListener(Event.ENTER_FRAME, update);
 
-		if (repeat)
-			bitmap.repeat = -1; 
-		else
-			bitmap.repeat = 0;
+	//	if (repeat)
+	//		bitmap.repeat = -1; 
+	//	else
+	//		bitmap.repeat = 0;
 
-		bitmap.inWindow = isWindow;
-		bitmap.fullscreen = isFullscreen;
+	//	bitmap.inWindow = isWindow;
+	//	bitmap.fullscreen = isFullscreen;
 
 		FlxG.addChildBelowMouse(bitmap);
-		bitmap.play(checkFile(path));
+	//	bitmap.play(checkFile(path));
 
 		if (outputTo != null)
 		{
 			// lol this is bad kek
-			bitmap.alpha = 0;
+	//		bitmap.alpha = 0;
 
 			sprite = outputTo;
 		}
@@ -101,7 +101,7 @@ class MP4Handler
 
 	public function onVLCComplete()
 	{
-		bitmap.stop();
+	//	bitmap.stop();
 
 		// Clean player, just in case! Actually no.
 
@@ -120,7 +120,7 @@ class MP4Handler
 				LoadingState.loadAndSwitchState(stateCallback);
 			}
 
-			bitmap.dispose();
+		//	bitmap.dispose();
 
 			if (FlxG.game.contains(bitmap))
 			{
@@ -131,14 +131,14 @@ class MP4Handler
 
 	public function kill()
 	{
-		bitmap.stop();
+	//	bitmap.stop();
 
-		if (finishCallback != null)
-		{
-			finishCallback();
-		}
+	//	if (finishCallback != null)
+	//	{
+	//		finishCallback();
+	//	}
 
-		bitmap.visible = false;
+	//	bitmap.visible = false;
 	}
 
 	function onVLCError()
@@ -157,15 +157,15 @@ class MP4Handler
 	{
 		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.SPACE)
 		{
-			if (bitmap.isPlaying)
+		//	if (bitmap.isPlaying)
 			{
-				onVLCComplete();
-			}
+		//		onVLCComplete();
+		//	}
 		}
 
-		bitmap.volume = FlxG.sound.volume + 0.3; // shitty volume fix. then make it louder.
+	//	bitmap.volume = FlxG.sound.volume + 0.3; // shitty volume fix. then make it louder.
 
 		if (FlxG.sound.volume <= 0.1)
-			bitmap.volume = 0;
+	//		bitmap.volume = 0;
 	}
 }
